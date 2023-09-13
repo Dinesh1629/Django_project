@@ -1,0 +1,83 @@
+
+
+{% load static %}
+
+
+<!DOCTYPE html>
+<html lang="en">
+ 
+
+<head>
+	<meta charset="utf-8">
+	<title>CEO login</title>
+	<link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700|Lato:400,100,300,700,900' rel='stylesheet' type='text/css'>
+
+	<link rel="stylesheet" href="{% static 'css/animate.css' %}">
+	<link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+</head>
+
+<body>
+	<div class="container">
+		<div class="row">
+		<div class="col-sm-12" style="align-content: center;"><div class="img"><center><img src="{% static 'images/logo.png' %} "></center></div></div></div>
+			<div class="row1"><h1 id="title" class="hidden"><!--<span id="logo">Welcome Head of Department</span>--></h1></div>
+		
+		<div class="login-box animated fadeInUp">
+			<div class="box-header">
+				<h2>Sign Up</h2>
+			</div>
+			<form action="register" method="POST">
+				{% csrf_token %}
+            
+            <label for="Firstname">Firstname</label>
+			<br/>
+			<input type="text" id="firstname" name="first_name" required>
+			<br/>
+            <label for="Lastname">Lastname</label>
+			<br/>
+			<input type="text" id="lastname" name="last_name" required>
+			<br/>
+			<label for="username">Username</label>
+			<br/>
+			<input type="text" id="username" name="username" required>
+			<br/>
+            <label for="Email">Email</label>
+			<br/>
+			<input type="Email" id="email" name="email" required>
+			<br/>
+			<label for="password" >Password</label>
+			<br/>
+			<input type="password" id="password" name="password1" required>
+			<br/>
+            <label for="Confirm Password" >Confirm Password</label>
+			<br/>
+			<input type="password" id="confirmpassword" name="password2" required>
+			<br/>
+			<input type="submit" value="Sign In" name="submit" id="sub"></a>
+			<br/>			
+			</form>
+		</div>
+		
+	</div>
+	 <div>
+		 {% for message in messages %}
+	 	 <h3> {{message}}  </h3>
+	    	{% endfor %}
+      </div>
+</body>
+
+</html>
+
+
+
+
+<style>
+#sub
+{
+	height:40px;
+	width:90px;
+	background-color: #665851;
+	color:white;
+}

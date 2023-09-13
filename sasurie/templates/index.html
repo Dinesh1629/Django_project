@@ -1,0 +1,313 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>index</title>
+    <!-- Animate.css -->
+    <link rel="stylesheet" href="{% static 'css/animate.css' %}">
+    <!-- Icomoon Icon Fonts-->
+    <link rel="stylesheet" href="{% static 'css/icomoon.css' %}">
+    <!-- Bootstrap  -->
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+
+    <!-- Magnific Popup -->
+    <link rel="stylesheet" href="{% static 'css/magnific-popup.css' %}">
+
+    <!-- Owl Carousel  -->
+    <link rel="stylesheet" href="{% static 'ss/owl.carousel.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/owl.theme.default.min.css' %}">
+
+    <!-- Theme style  -->
+    <link rel="stylesheet" href="{% static 'css/styl.css' %}">
+
+    <!-- Modernizr JS -->
+  </head>
+  <header>
+    <nav class="navbar navbar" id="nav">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button " class="navbar-toggle" data-toggle="collapse"
+            data-target="#myNavbar">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <div>
+            <a class="navbar-brand" id="img"> <img
+                src="{% static 'images\logo.png' %}" id="img1"></a>
+          </div>
+        </div>
+        <div class="collapse navbar-collapse" id="myNavbar">
+          <ul class="nav navbar-nav">
+            <div class="text">
+              <h1 id="text2">Sasurie College of Engineering</h1>
+            </div>
+          </div>
+        </ul>
+      </div>
+    </nav>
+  </header>
+   {% if user.is_authenticated %}   
+  <nav class="navbar navbar-default" role="navigation" id="menu">
+    <div>
+        <div class="row">
+        <!-- Brand and toggle get grouped for better mobile display -->
+            <div>
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    
+                </button>
+                
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav main-nav">
+                  <li><a class="color_animation" href="users/login"></a></li>
+                  <li></li>
+                   <li><a class="color_animation" href="logout"><button type="button" class="btn btn-default">Logout</button></a></li>
+                   
+                 </ul>
+            </div><!-- /.navbar-collapse -->
+        </div>
+    </div><!-- /.container-fluid -->
+</nav>	
+  
+<body >
+  <form action="process_form" method="POST">
+    {% csrf_token %}
+
+    <label for="department">Select Department:</label>
+    <input type="text" list="departments" id="department" name="department">                      
+    <datalist id="departments">
+      <option value="cse">
+      <option value="ece">
+      <option value="eee">
+      <option value="civil">
+      <option value="mech">
+    </datalist>                      
+    <br/>
+    <label for="year">Year:</label>
+    <input type="text" list="years" id="year" name="year">                      
+    <datalist id="years">
+      <option value="1">
+      <option value="2">
+      <option value="3">
+      <option value="4">
+     </datalist>                    
+     <br/>
+     <a class="color_animation" ><button type="submit" class="btn btn-default" id='welcome'>Hello , {{username}}</button></a>
+    </form>
+</body>
+  {% else %} 
+
+
+  <nav class="navbar navbar-default" role="navigation" id="menu">
+    <div>
+        <div class="row">
+        <!-- Brand and toggle get grouped for better mobile display -->
+            <div>
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>                    
+                </button>               
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav main-nav">
+                    <li><a class="color_animation" class="btn btn-default"></a></li>
+                    <li><a class="color_animation" href="users/login"><button type="button" class="btn btn-default">Login</button></a></li>
+                    <li><a class="color_animation" href="users/register"><button type="button" class="btn btn-default" id="logout">Register</button></a></li>                         
+                  </ul>
+            </div><!-- /.navbar-collapse -->
+          </div>
+    </div><!-- /.container-fluid -->
+</nav>	  
+<body >
+<center>
+<div>
+<h1 >Vision</h1></br>
+
+<p id="p1">Our ambition is to develop a centre for imparting technical education with creativity and perform research with practical values to meet challenges of engineering environment and to achieve rural empowerment.</p>
+<h1 id="h1" >Mission</h1></br>
+</div>
+<div>
+
+<p id="p1">The institute aims to produce innovative professionals with sound subject knowledge, research experience and social character for a sustainable growth of the nation by providing adequate training to develop education with leadership qualities. </p>
+<h1 id="h1">Quality Policy</h1></br>
+</div>
+<div>
+<p id="p1">Quality policy of Sasurie College of Engineering is "Eminence in teaching through quality programs to make the young professionals self sustained and adaptable to the ever changing global impacts and need of the industry with social relevance"</p>
+
+</div>
+</center>
+</body>  
+
+ 
+
+  {% endif %}
+
+  <script>
+const button = document.getElementById('welcome');
+const originalText = button.textContent;
+const newText = ' Welcome to Dashboard!';
+
+button.addEventListener('mouseover', () => {
+  button.textContent = newText;
+});
+
+button.addEventListener('mouseout', () => {
+  button.textContent = originalText;
+});
+
+
+</script>
+  <!-- jQuery -->
+  <script src="{% static 'js/jquery.min.js' %}"></script>
+
+  <!-- jQuery Easing -->
+  <script src="{% static 'js/jquery.easing.1.3.js' %}"></script>
+  <!-- Bootstrap -->
+  <script src="{% static 'js/bootstrap.min.js' %}"></script>
+  <!-- Waypoints -->
+  <script src="{% static 'js/jquery.waypoints.min.js' %}"></script>
+  <!-- Carousel -->
+  <script src="{% static 'js/owl.carousel.min.js' %}"></script>
+  <!-- countTo -->
+  <script src="{% static 'js/jquery.countTo.js' %}"></script>
+
+  <!-- Stellar -->
+  <script src="{% static 's/jquery.stellar.min.js' %}"></script>
+  <!-- Magnific Popup -->
+  <script src="{% static 'js/jquery.magnific-popup.min.js' %}"></script>
+  <script src="{% static 'js/magnific-popup-options.js' %}"></script>
+
+  <!-- // <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/0.0.1/prism.min.js"></script> -->
+  <script src="{% static 'js/simplyCountdown.js' %}"></script>
+  <!-- Main -->
+  <script src="{% static 'js/main.js' %}"></script>
+</html>
+<style type="text/css">
+  #logout{
+    margin-left:500px;
+     }
+  form {
+
+    max-width: 400px;
+    margin-left:35%;
+    padding: 15px;
+    border: 1px solid #ccc;
+    background-color: #f9f9f9;
+  }
+  
+  /* Styling for the input field */
+  input[type="text"] {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+  }
+  
+  
+  
+  /* Styling for the submit button on hover */
+   .dropdown-container {
+    display: flex;
+    justify-content: space-around;
+    margin: 20px;
+  }
+  
+  .dropdown {
+    display: flex;
+    flex-direction: column;
+    margin: 10px;
+  }
+  
+  label {
+    margin-bottom: 5px;
+  }
+
+#myNavbar{
+  text-align: center;
+}
+#text2{
+  font-family:Helvetica;
+  font-style: inherit;
+  font-size: 34px;
+  text-shadow: 0px 1px 2px black;
+  color:black;
+  margin-top:10px;
+  margin-left:200px;	
+}
+#nav
+{
+  /*box-shadow: 0px 0px 5px green;*/
+ padding: 20px; 
+ background-color:transparent;
+ border:none;  
+}
+.navbar-toggle
+{
+  background-color:white;
+  box-shadow: 0px 1px 2px black;
+  width: 30px;
+  height: 30px;
+}
+#img1
+{
+  margin-left:-30%;
+  margin-top:-30%;
+  height:150px;
+  width:100px;
+  position: relative;
+
+}
+.btn:hover
+{
+ background-color:red;
+ color:white;
+}
+#welcome{
+  /* Styles for the default state */
+  padding: 10px 80px;
+  background-color: #3498db;
+  color: #ffffff;
+  border: none;
+  cursor: pointer;
+  margin-left:50px;
+}
+#welcome:hover{
+  margin-left: 80;
+}
+
+#menu{
+  margin-left: 40%;
+	width:30%;
+  margin-top:-1%;
+  background-color:white;
+  box-shadow: 0px 0px 0px 0px white;
+}
+.sasurians{
+	margin-top:3%;
+}
+header{
+  background-color:yellow;
+}
+
+#p1
+{
+  font-size: 20px;padding-left: 25px;
+
+}
+#h1{
+  padding-top:50px;
+}
+li{
+  font-size:20px;
+}
+.navbar-default {
+  border-color:white;
+}
+
+ 
+</style>
