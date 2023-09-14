@@ -86,6 +86,9 @@ def process_form(request):
     if request.method == 'POST':
         selected_department = request.POST.get('department') # Get the selected department value
         selected_year = request.POST.get('year')
+        request.session['department'] = selected_department
+        request.session['year'] = selected_year
+
         
         students = Std.objects.filter(Department=selected_department, Year=selected_year).count()    
         # student_count = students.count()
@@ -96,7 +99,6 @@ def process_form(request):
         return render(request, 'landing.html', {'total_strength':total_strength,'faculty': faculty,'students': students})
     
      
-
 
 def landing(request):       
     return render(request, 'index.html')
