@@ -98,11 +98,8 @@ def process_form(request):
      
 
 
-def landing(request):   
-    student = get_student()   
-    faculty = get_faculty()
-    # total_strength = int(student) + int(faculty)
-    # return render(request, 'landing.html', {'total_strength': total_strength,'faculty':faculty,'student':student})
+def landing(request):       
+    return render(request, 'index.html')
 
 
 
